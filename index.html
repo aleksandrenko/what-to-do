@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>What to do?</title>
+  <meta name="description" content="One button. One idea for what to do right now, based on your interests, the weather and the time.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">What to do?</span>
+    <button id="weatherPill" class="pill" type="button" aria-label="Location and weather">📍 Set location</button>
+    <button id="settingsBtn" class="icon-btn" type="button" aria-label="Settings">⚙️</button>
+  </header>
+
+  <!-- Setup / settings -->
+  <main id="setup" class="view" hidden>
+    <p id="inviteNote" class="note" hidden></p>
+    <h1>What are you into?</h1>
+    <p class="muted">Pick at least 3. This stays on your device.</p>
+    <div id="interestChips" class="chips" role="group" aria-label="Interests"></div>
+
+    <h2>Budget</h2>
+    <div id="budgetSeg" class="seg" role="radiogroup" aria-label="Budget">
+      <button type="button" data-budget="free" role="radio">Free only</button>
+      <button type="button" data-budget="cheap" role="radio">Cheap</button>
+      <button type="button" data-budget="any" role="radio">Anything</button>
+    </div>
+
+    <h2>Where are you?</h2>
+    <p class="muted">Used only to check the weather and find places nearby.</p>
+    <div class="row">
+      <button id="geoBtn" type="button" class="btn">📍 Use my location</button>
+      <span class="muted">or</span>
+    </div>
+    <form id="cityForm" class="row">
+      <input id="cityInput" type="text" placeholder="Type a city" autocomplete="address-level2" aria-label="City">
+      <button type="submit" class="btn">Set</button>
+    </form>
+    <p id="placeStatus" class="muted"></p>
+
+    <h2>Your name <span class="muted">(optional, shown to friends you invite)</span></h2>
+    <input id="nameInput" type="text" maxlength="24" placeholder="e.g. Niki" aria-label="Your name">
+
+    <div class="setup-footer">
+      <button id="doneBtn" type="button" class="btn primary" disabled>Done</button>
+      <button id="resetBtn" type="button" class="link" hidden>Reset what the app learned</button>
+    </div>
+  </main>
+
+  <!-- The button -->
+  <main id="home" class="view" hidden>
+    <div id="friendsBar" class="friends" hidden></div>
+    <div id="stage" class="stage">
+      <button id="bigBtn" class="big-btn" type="button">
+        <span id="bigBtnFace" class="big-btn-face">What<br>to do?</span>
+      </button>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="activities.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
